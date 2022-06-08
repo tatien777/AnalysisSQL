@@ -15,12 +15,21 @@ CREATE SCHEMA IF NOT EXISTS `GlobalDataset` DEFAULT CHARACTER SET utf8 ;
 USE `GlobalDataset` ;
 
 -- -----------------------------------------------------
--- Table `GlobalDataset`.`Cotinents`
+-- Table `GlobalDataset`.`Continents`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `GlobalDataset`.`Cotinents` (
-  `contient_code` VARCHAR(20) NOT NULL,
-  `cotinent_name` VARCHAR(45) NULL,
-  PRIMARY KEY (`contient_code`))
+CREATE TABLE IF NOT EXISTS `GlobalDataset`.`Continents` (
+  `continent_code` VARCHAR(20) NOT NULL,
+  `continent_name` VARCHAR(45) NULL,
+  PRIMARY KEY (`continent_code`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `GlobalDataset`.`ContinentMap`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `GlobalDataset`.`ContinentMap` (
+  `country_code` VARCHAR(20) NULL,
+  `continent_code` VARCHAR(45) NULL)
 ENGINE = InnoDB;
 
 
@@ -35,43 +44,12 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `GlobalDataset`.`CotinentMap`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `GlobalDataset`.`CotinentMap` (
-  `country_code` VARCHAR(20) NULL,
-  `cotinent_code` VARCHAR(45) NULL,
-  `Cotinents_contient_code` VARCHAR(20) NOT NULL,
-  `Countries_country_code` VARCHAR(20) NOT NULL,
-  PRIMARY KEY (`Cotinents_contient_code`, `Countries_country_code`),
-  INDEX `fk_CotinentMap_Countries1_idx` (`Countries_country_code` ASC) VISIBLE,
-  CONSTRAINT `fk_CotinentMap_Cotinents`
-    FOREIGN KEY (`Cotinents_contient_code`)
-    REFERENCES `GlobalDataset`.`Cotinents` (`contient_code`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_CotinentMap_Countries1`
-    FOREIGN KEY (`Countries_country_code`)
-    REFERENCES `GlobalDataset`.`Countries` (`country_code`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `GlobalDataset`.`PerCapita`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `GlobalDataset`.`PerCapita` (
-  `country_code` VARCHAR(20) NOT NULL,
+  `country_code` VARCHAR(20) NULL,
   `year` YEAR(4) NULL,
-  `gdp_per_capita` FLOAT NULL,
-  `Countries_country_code` VARCHAR(20) NOT NULL,
-  PRIMARY KEY (`country_code`, `Countries_country_code`),
-  INDEX `fk_PerCapita_Countries1_idx` (`Countries_country_code` ASC) VISIBLE,
-  CONSTRAINT `fk_PerCapita_Countries1`
-    FOREIGN KEY (`Countries_country_code`)
-    REFERENCES `GlobalDataset`.`Countries` (`country_code`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  `gdp_per_capita` FLOAT NULL)
 ENGINE = InnoDB;
 
 

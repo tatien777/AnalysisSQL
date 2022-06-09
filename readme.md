@@ -1,7 +1,7 @@
 Hi, my name is Tien (David). :wave:
 
 In this repository, I will show step by step resolving the problem in Upmesh Analytics Code Challenge. Here we go ! 
-1. :file_folder: Data Warehouse: 
+1. :file_folder: **Data Warehouse:** 
 - Create schema and table: Utilizing mySQL workbench to create schema and table with its relationships. (I don't define any relationship because it's not required in this case)
 
     Look  at the ERR diagram below: 
@@ -24,7 +24,7 @@ In this repository, I will show step by step resolving the problem in Upmesh Ana
 
     ```DATA LOCAL INFILE '/home/azureuser/dev/AnalysisSQL/analyst-challenge/data_csv/countries.csv' INTO TABLE Countries FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS; ```
 
-2. :pick: Build BI tool with metabase:  
+2. :pick: **Build BI tool with metabase:**  
 
 - Setup server on azruze cloud:
 
@@ -56,10 +56,12 @@ Read more in [here](https://www.metabase.com/docs/latest/operations-guide/runnin
 
     This email has a full permission to access to many places and write the query/sql in my database.
 
+    **OR without account**: http://20.213.15.238:3000/public/dashboard/852f8a2c-fcfb-42a5-bc3c-db3fcc3ff020
+
     ![access_account](image/access_account.png)
 
 
-3. :bar_chart: Problem & Explanation:
+3. :bar_chart: **Problem & Explanation:**
 
 - **Problem 1:** 
     - How to find the country_codes appearing more than once and adjust *country_code* with null or blank value to "F00".

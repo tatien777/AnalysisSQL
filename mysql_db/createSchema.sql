@@ -29,7 +29,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `GlobalDataset`.`ContinentMap` (
   `country_code` VARCHAR(20) NULL,
-  `continent_code` VARCHAR(45) NULL)
+  `continent_code` VARCHAR(20) NULL)
 ENGINE = InnoDB;
 
 
